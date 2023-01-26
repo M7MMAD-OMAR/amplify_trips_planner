@@ -48,6 +48,12 @@
       "Type": "String",
       "Default": "AppSyncSimpleTransform"
     },
+    "authRoleName": {
+      "Type": "String"
+    },
+    "unauthRoleName": {
+      "Type": "String"
+    },
     "S3DeploymentBucket": {
       "Type": "String",
       "Description": "An S3 Bucket name where assets are deployed"
@@ -76,6 +82,11 @@
             ]
           ]
         },
+        "AdditionalAuthenticationProviders": [
+          {
+            "AuthenticationType": "AWS_IAM"
+          }
+        ],
         "UserPoolConfig": {
           "AwsRegion": {
             "Ref": "AWS::Region"
@@ -360,6 +371,12 @@
           },
           "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
             "Ref": "S3DeploymentRootKey"
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           }
         }
       },
@@ -436,6 +453,12 @@
               "Trip",
               "Outputs.transformerrootstackTripQuerygetTrippostAuth0FunctionQuerygetTrippostAuth0FunctionAppSyncFunction5D8CFA35FunctionId"
             ]
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           },
           "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name": {
             "Fn::GetAtt": [
@@ -536,6 +559,12 @@
               "Activity",
               "Outputs.transformerrootstackActivityActivityTableCD9A2EF5Ref"
             ]
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           },
           "referencetotransformerrootstackTripNestedStackTripNestedStackResource27FDC0C9OutputstransformerrootstackTripTripDataSourceECF8A10EName": {
             "Fn::GetAtt": [

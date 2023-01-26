@@ -42,12 +42,12 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-01-26T12:12:36.068Z",
+      "lastPushTimeStamp": "2023-01-26T13:13:43.462Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytripsplanner-dev-134830-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiamplifytripsplanner"
       },
-      "lastPushDirHash": "QHbo4ujcRPORlHSeo+gTR2IY1bY="
+      "lastPushDirHash": "Uz8OrykqXtA6I3yQh7oRMY93qCU="
     }
   },
   "auth": {
@@ -85,7 +85,7 @@
         "IdentityPoolName": "amplifytripsplannere57d0b5c_identitypool_e57d0b5c__dev",
         "UserPoolName": "amplifytripsplannere57d0b5c_userpool_e57d0b5c"
       },
-      "lastPushTimeStamp": "2023-01-26T12:12:36.026Z",
+      "lastPushTimeStamp": "2023-01-26T13:13:43.401Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytripsplanner-dev-134830-deployment/amplify-cfn-templates/auth/amplifytripsplannere57d0b5c-cloudformation-template.json",
         "logicalId": "authamplifytripsplannere57d0b5c"
@@ -101,7 +101,7 @@
         "BucketName": "amplifytripsplannerfee9472c6d3d4611b409fb0595c1134830-dev",
         "Region": "us-east-2"
       },
-      "lastPushTimeStamp": "2023-01-26T12:12:36.027Z",
+      "lastPushTimeStamp": "2023-01-26T13:13:43.402Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytripsplanner-dev-134830-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "logicalId": "storages3757c69ca"

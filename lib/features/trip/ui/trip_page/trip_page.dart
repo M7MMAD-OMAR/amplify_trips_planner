@@ -1,3 +1,5 @@
+import 'package:amplify_trips_planner/common/ui/navigation_drawer.dart';
+import 'package:amplify_trips_planner/features/activity/ui/activities_list/activities_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +14,7 @@ class TripPage extends ConsumerWidget {
     required this.tripId,
     super.key,
   });
+
   final String tripId;
 
   @override
@@ -35,17 +38,32 @@ class TripPage extends ConsumerWidget {
         ],
         backgroundColor: const Color(constants.primaryColorDark),
       ),
+      drawer: const NavigationDrawer(),
+      floatingActionButton: tripValue.when(
+        data: (trip) => FloatingActionButton(
+          onPressed: () {
+            context.goNamed(
+              AppRoute.addactivity.name,
+              params: {'id': tripId},
+            );
+          },
+          backgroundColor: const Color(constants.primaryColorDark),
+          child: const Icon(Icons.add),
+        ),
+        error: (e, st) => const Placeholder(),
+        loading: () => const Placeholder(),
+      ),
       body: tripValue.when(
         data: (trip) => trip == null
             ? const Center(
-          child: Text('Trip Not Found'),
-        )
+                child: Text('Trip Not Found'),
+              )
             : Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(
-              height: 8,
-            ),
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(
+                    height: 8,
+                  ),
             SelectedTripCard(trip: trip),
             const SizedBox(
               height: 20,
@@ -57,17 +75,22 @@ class TripPage extends ConsumerWidget {
               endIndent: 20,
             ),
             const Text(
-              'Your Activities',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-          ],
+                    'Your Activities',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Expanded(
+                    child: ActivitiesList(
+                      trip: trip,
+                    ),
+                  )
+                ],
         ),
         error: (e, st) => Center(
           child: Column(
