@@ -1,15 +1,15 @@
 
-type Trip {
-  id: ID!
-  tripName: String!
-  destination: String!
-  startDate: AWSDate!
-  endDate: AWSDate!
-  tripImageUrl: String
-  tripImageKey: String
-  createdAt: AWSDateTime!
-  updatedAt: AWSDateTime!
-  _version: Int!
+type Trip @aws_iam @aws_cognito_user_pools {
+    id: ID!
+    tripName: String!
+    destination: String!
+    startDate: AWSDate!
+    endDate: AWSDate!
+    tripImageUrl: String
+    tripImageKey: String
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    _version: Int!
   _deleted: Boolean
   _lastChangedAt: AWSTimestamp!
   owner: String
@@ -165,10 +165,10 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelTripConnection {
-  items: [Trip]!
-  nextToken: String
-  startedAt: AWSTimestamp
+type ModelTripConnection @aws_iam @aws_cognito_user_pools {
+    items: [Trip]!
+    nextToken: String
+    startedAt: AWSTimestamp
 }
 
 input ModelTripFilterInput {
@@ -185,9 +185,9 @@ input ModelTripFilterInput {
 }
 
 type Query {
-  getTrip(id: ID!): Trip
-  listTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String): ModelTripConnection
-  syncTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTripConnection
+    getTrip(id: ID!): Trip @aws_iam @aws_cognito_user_pools
+    listTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String): ModelTripConnection @aws_iam @aws_cognito_user_pools
+    syncTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTripConnection @aws_iam @aws_cognito_user_pools
 }
 
 input ModelTripConditionInput {
@@ -230,9 +230,9 @@ input DeleteTripInput {
 }
 
 type Mutation {
-  createTrip(input: CreateTripInput!, condition: ModelTripConditionInput): Trip
-  updateTrip(input: UpdateTripInput!, condition: ModelTripConditionInput): Trip
-  deleteTrip(input: DeleteTripInput!, condition: ModelTripConditionInput): Trip
+    createTrip(input: CreateTripInput!, condition: ModelTripConditionInput): Trip @aws_iam @aws_cognito_user_pools
+    updateTrip(input: UpdateTripInput!, condition: ModelTripConditionInput): Trip @aws_iam @aws_cognito_user_pools
+    deleteTrip(input: DeleteTripInput!, condition: ModelTripConditionInput): Trip @aws_iam @aws_cognito_user_pools
 }
 
 input ModelSubscriptionTripFilterInput {
@@ -248,8 +248,8 @@ input ModelSubscriptionTripFilterInput {
 }
 
 type Subscription {
-  onCreateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["createTrip"])
-  onUpdateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["updateTrip"])
-  onDeleteTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["deleteTrip"])
+    onCreateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["createTrip"]) @aws_iam @aws_cognito_user_pools
+    onUpdateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["updateTrip"]) @aws_iam @aws_cognito_user_pools
+    onDeleteTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["deleteTrip"]) @aws_iam @aws_cognito_user_pools
 }
 

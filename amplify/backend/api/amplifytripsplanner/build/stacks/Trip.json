@@ -1670,6 +1670,75 @@
           ]
         }
       }
+    },
+    "transformerrootstackTripQuerygetTripauth0FunctionQuerygetTripauth0FunctionAppSyncFunction8D8255A2FunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "QuerygetTripauth0FunctionQuerygetTripauth0FunctionAppSyncFunction810BA44B",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripQuerygetTrippostAuth0FunctionQuerygetTrippostAuth0FunctionAppSyncFunction5D8CFA35FunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "QuerygetTrippostAuth0FunctionQuerygetTrippostAuth0FunctionAppSyncFunction778B0A96",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripMutationcreateTripinit0FunctionMutationcreateTripinit0FunctionAppSyncFunction1A6F8D6CFunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "MutationcreateTripinit0FunctionMutationcreateTripinit0FunctionAppSyncFunctionD0BD4D66",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripMutationupdateTripinit0FunctionMutationupdateTripinit0FunctionAppSyncFunction9772715FFunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "MutationupdateTripinit0FunctionMutationupdateTripinit0FunctionAppSyncFunction0F86A98A",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripSubscriptiononCreateTripauth0FunctionSubscriptiononCreateTripauth0FunctionAppSyncFunction6070112AFunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "SubscriptiononCreateTripauth0FunctionSubscriptiononCreateTripauth0FunctionAppSyncFunction4E8ECCE9",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripSubscriptionOnCreateTripDataResolverFnSubscriptionOnCreateTripDataResolverFnAppSyncFunctionCF6629BEFunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "SubscriptionOnCreateTripDataResolverFnSubscriptionOnCreateTripDataResolverFnAppSyncFunction4356381C",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripTripOwnerDataResolverFnTripOwnerDataResolverFnAppSyncFunctionE216C8A4FunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "TripOwnerDataResolverFnTripOwnerDataResolverFnAppSyncFunctionC0D585DA",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackTripTripDataSourceECF8A10EName": {
+      "Value": {
+        "Fn::GetAtt": [
+          "TripDataSource",
+          "Name"
+        ]
+      }
+    },
+    "transformerrootstackTripTripTable453C3121Ref": {
+      "Value": {
+        "Ref": "TripTable"
+      }
     }
   }
 }

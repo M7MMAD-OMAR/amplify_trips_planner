@@ -42,7 +42,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytripsplanner-dev-134830-deployment/amplify-cfn-templates/auth/amplifytripsplannere57d0b5c-cloudformation-template.json",
         "logicalId": "authamplifytripsplannere57d0b5c"
       },
-      "lastPushTimeStamp": "2023-01-26T10:55:50.713Z",
+      "lastPushTimeStamp": "2023-01-26T12:57:54.500Z",
       "output": {
         "UserPoolId": "us-east-2_ECOtVIRqS",
         "AppClientIDWeb": "75uqgvghlnsiegb15aq5k2jqrf",
@@ -85,7 +85,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytripsplanner-dev-134830-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiamplifytripsplanner"
       },
-      "lastPushTimeStamp": "2023-01-26T10:55:50.713Z",
+      "lastPushTimeStamp": "2023-01-26T12:58:08.822Z",
       "lastPushDirHash": "kBBRSMrVu8spb93efrfzlNXI/OA="
     }
   },
@@ -94,7 +94,7 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "lastPushTimeStamp": "2023-01-26T10:55:50.713Z",
+      "lastPushTimeStamp": "2023-01-26T12:57:57.468Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifytripsplanner-dev-134830-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "logicalId": "storages3757c69ca"

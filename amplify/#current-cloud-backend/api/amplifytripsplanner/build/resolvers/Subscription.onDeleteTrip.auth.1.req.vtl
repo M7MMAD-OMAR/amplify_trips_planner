@@ -1,6 +1,15 @@
 ## [Start] Authorization Steps. **
 $util.qr($ctx.stash.put("hasAuth", true))
 #set( $isAuthorized = false )
+#if( $util.authType() == "IAM Authorization" )
+  #set( $adminRoles = ["us-east-2_yuxfMaJ1s_Full-access/CognitoIdentityCredentials","us-east-2_yuxfMaJ1s_Manage-only/CognitoIdentityCredentials"] )
+  #foreach( $adminRole in $adminRoles )
+    #if( $ctx.identity.userArn.contains($adminRole) && $ctx.identity.userArn != $ctx.stash.authRole && $ctx.identity.userArn != $ctx.stash.unauthRole )
+      #return($util.toJson({}))
+    #end
+  #end
+$util.unauthorized()
+#end
 #if( $util.authType() == "User Pool Authorization" )
   #set( $authRuntimeFilter = [] )
   #set( $authOwnerRuntimeFilter = [] )

@@ -1,29 +1,54 @@
-
 type Trip {
-  id: ID!
-  tripName: String!
-  destination: String!
-  startDate: AWSDate!
-  endDate: AWSDate!
-  tripImageUrl: String
-  tripImageKey: String
-  createdAt: AWSDateTime!
-  updatedAt: AWSDateTime!
-  _version: Int!
-  _deleted: Boolean
-  _lastChangedAt: AWSTimestamp!
-  owner: String
+    id: ID!
+    tripName: String!
+    destination: String!
+    startDate: AWSDate!
+    endDate: AWSDate!
+    tripImageUrl: String
+    tripImageKey: String
+    Activities(activityName: ModelStringKeyConditionInput, filter: ModelActivityFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelActivityConnection
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    _version: Int!
+    _deleted: Boolean
+    _lastChangedAt: AWSTimestamp!
+    owner: String
+}
+
+type Activity {
+    id: ID!
+    activityName: String!
+    tripID: ID!
+    trip: Trip!
+    activityImageUrl: String
+    activityImageKey: String
+    activityDate: AWSDate!
+    activityTime: AWSTime
+    category: ActivityCategory!
+    createdAt: AWSDateTime!
+    updatedAt: AWSDateTime!
+    _version: Int!
+    _deleted: Boolean
+    _lastChangedAt: AWSTimestamp!
+    owner: String
+}
+
+enum ActivityCategory {
+    Flight
+    Lodging
+    Meeting
+    Restaurant
 }
 
 input ModelStringInput {
-  ne: String
-  eq: String
-  le: String
-  lt: String
-  ge: String
-  gt: String
-  contains: String
-  notContains: String
+    ne: String
+    eq: String
+    le: String
+    lt: String
+    ge: String
+    gt: String
+    contains: String
+    notContains: String
   between: [String]
   beginsWith: String
   attributeExists: Boolean
@@ -185,9 +210,12 @@ input ModelTripFilterInput {
 }
 
 type Query {
-  getTrip(id: ID!): Trip
-  listTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String): ModelTripConnection
-  syncTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTripConnection
+    getTrip(id: ID!): Trip
+    listTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String): ModelTripConnection
+    syncTrips(filter: ModelTripFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelTripConnection
+    getActivity(id: ID!): Activity
+    listActivities(filter: ModelActivityFilterInput, limit: Int, nextToken: String): ModelActivityConnection
+    syncActivities(filter: ModelActivityFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelActivityConnection
 }
 
 input ModelTripConditionInput {
@@ -230,9 +258,12 @@ input DeleteTripInput {
 }
 
 type Mutation {
-  createTrip(input: CreateTripInput!, condition: ModelTripConditionInput): Trip
-  updateTrip(input: UpdateTripInput!, condition: ModelTripConditionInput): Trip
-  deleteTrip(input: DeleteTripInput!, condition: ModelTripConditionInput): Trip
+    createTrip(input: CreateTripInput!, condition: ModelTripConditionInput): Trip
+    updateTrip(input: UpdateTripInput!, condition: ModelTripConditionInput): Trip
+    deleteTrip(input: DeleteTripInput!, condition: ModelTripConditionInput): Trip
+    createActivity(input: CreateActivityInput!, condition: ModelActivityConditionInput): Activity
+    updateActivity(input: UpdateActivityInput!, condition: ModelActivityConditionInput): Activity
+    deleteActivity(input: DeleteActivityInput!, condition: ModelActivityConditionInput): Activity
 }
 
 input ModelSubscriptionTripFilterInput {
@@ -241,15 +272,108 @@ input ModelSubscriptionTripFilterInput {
   destination: ModelSubscriptionStringInput
   startDate: ModelSubscriptionStringInput
   endDate: ModelSubscriptionStringInput
-  tripImageUrl: ModelSubscriptionStringInput
-  tripImageKey: ModelSubscriptionStringInput
-  and: [ModelSubscriptionTripFilterInput]
-  or: [ModelSubscriptionTripFilterInput]
+    tripImageUrl: ModelSubscriptionStringInput
+    tripImageKey: ModelSubscriptionStringInput
+    and: [ModelSubscriptionTripFilterInput]
+    or: [ModelSubscriptionTripFilterInput]
 }
 
 type Subscription {
-  onCreateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["createTrip"])
-  onUpdateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["updateTrip"])
-  onDeleteTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["deleteTrip"])
+    onCreateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["createTrip"])
+    onUpdateTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["updateTrip"])
+    onDeleteTrip(filter: ModelSubscriptionTripFilterInput, owner: String): Trip @aws_subscribe(mutations: ["deleteTrip"])
+    onCreateActivity(filter: ModelSubscriptionActivityFilterInput, owner: String): Activity @aws_subscribe(mutations: ["createActivity"])
+    onUpdateActivity(filter: ModelSubscriptionActivityFilterInput, owner: String): Activity @aws_subscribe(mutations: ["updateActivity"])
+    onDeleteActivity(filter: ModelSubscriptionActivityFilterInput, owner: String): Activity @aws_subscribe(mutations: ["deleteActivity"])
+}
+
+type ModelActivityConnection {
+    items: [Activity]!
+    nextToken: String
+    startedAt: AWSTimestamp
+}
+
+input ModelActivityCategoryInput {
+    eq: ActivityCategory
+    ne: ActivityCategory
+}
+
+input ModelActivityFilterInput {
+    id: ModelIDInput
+    activityName: ModelStringInput
+    tripID: ModelIDInput
+    activityImageUrl: ModelStringInput
+    activityImageKey: ModelStringInput
+    activityDate: ModelStringInput
+    activityTime: ModelStringInput
+    category: ModelActivityCategoryInput
+    and: [ModelActivityFilterInput]
+    or: [ModelActivityFilterInput]
+    not: ModelActivityFilterInput
+}
+
+input ModelActivityConditionInput {
+    activityName: ModelStringInput
+    tripID: ModelIDInput
+    activityImageUrl: ModelStringInput
+    activityImageKey: ModelStringInput
+    activityDate: ModelStringInput
+    activityTime: ModelStringInput
+    category: ModelActivityCategoryInput
+    and: [ModelActivityConditionInput]
+    or: [ModelActivityConditionInput]
+    not: ModelActivityConditionInput
+}
+
+input CreateActivityInput {
+    id: ID
+    activityName: String!
+    tripID: ID!
+    activityImageUrl: String
+    activityImageKey: String
+    activityDate: AWSDate!
+    activityTime: AWSTime
+    category: ActivityCategory!
+    _version: Int
+}
+
+input UpdateActivityInput {
+    id: ID!
+    activityName: String
+    tripID: ID
+    activityImageUrl: String
+    activityImageKey: String
+    activityDate: AWSDate
+    activityTime: AWSTime
+    category: ActivityCategory
+    _version: Int
+}
+
+input DeleteActivityInput {
+    id: ID!
+    _version: Int
+}
+
+input ModelSubscriptionActivityFilterInput {
+    id: ModelSubscriptionIDInput
+    activityName: ModelSubscriptionStringInput
+    tripID: ModelSubscriptionIDInput
+    activityImageUrl: ModelSubscriptionStringInput
+    activityImageKey: ModelSubscriptionStringInput
+    activityDate: ModelSubscriptionStringInput
+    activityTime: ModelSubscriptionStringInput
+    category: ModelSubscriptionStringInput
+    and: [ModelSubscriptionActivityFilterInput]
+    or: [ModelSubscriptionActivityFilterInput]
+}
+
+input ModelStringKeyConditionInput {
+    eq: String
+    le: String
+    lt: String
+    ge: String
+    gt: String
+    between: [String]
+    beginsWith: String
 }
 

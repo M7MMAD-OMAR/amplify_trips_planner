@@ -48,6 +48,12 @@
       "Type": "String",
       "Default": "AppSyncSimpleTransform"
     },
+    "authRoleName": {
+      "Type": "String"
+    },
+    "unauthRoleName": {
+      "Type": "String"
+    },
     "S3DeploymentBucket": {
       "Type": "String",
       "Description": "An S3 Bucket name where assets are deployed"
@@ -76,6 +82,11 @@
             ]
           ]
         },
+        "AdditionalAuthenticationProviders": [
+          {
+            "AuthenticationType": "AWS_IAM"
+          }
+        ],
         "UserPoolConfig": {
           "AwsRegion": {
             "Ref": "AWS::Region"
@@ -360,6 +371,12 @@
           },
           "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
             "Ref": "S3DeploymentRootKey"
+          },
+          "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+            "Ref": "authRoleName"
+          },
+          "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+            "Ref": "unauthRoleName"
           }
         }
       },
@@ -459,6 +476,5 @@
         }
       }
     }
-  },
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.6.2\",\"stackType\":\"api-AppSync\",\"metadata\":{}}"
+  }
 }

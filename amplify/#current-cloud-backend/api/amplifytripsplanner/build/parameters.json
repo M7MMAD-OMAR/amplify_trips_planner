@@ -1,13 +1,19 @@
 {
-    "AppSyncApiName": "amplifytripsplanner",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false,
-    "AuthCognitoUserPoolId": {
-        "Fn::GetAtt": [
-            "authamplifytripsplannere57d0b5c",
-            "Outputs.UserPoolId"
-        ]
-    },
-    "S3DeploymentBucket": "amplify-amplifytripsplanner-dev-134830-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/f601736c8cc874af5f659dbeb42e77ac7ce55d2a"
+  "AppSyncApiName": "amplifytripsplanner",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authamplifytripsplannere57d0b5c",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "authRoleName": {
+    "Ref": "AuthRoleName"
+  },
+  "unauthRoleName": {
+    "Ref": "UnauthRoleName"
+  },
+  "S3DeploymentBucket": "amplify-amplifytripsplanner-dev-134830-deployment",
+  "S3DeploymentRootKey": "amplify-appsync-files/6b7789eefb0b43b7cb4e3fb6ef340d94df139e70"
 }
