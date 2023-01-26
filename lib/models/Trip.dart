@@ -191,14 +191,20 @@ class Trip extends Model {
     buffer.write("id=" + "$id" + ", ");
     buffer.write("tripName=" + "$_tripName" + ", ");
     buffer.write("destination=" + "$_destination" + ", ");
-    buffer.write("startDate=" + (_startDate != null ? _startDate!.format() : "null") + ", ");
-    buffer.write("endDate=" + (_endDate != null ? _endDate!.format() : "null") + ", ");
+    buffer.write("startDate=" +
+        (_startDate != null ? _startDate!.format() : "null") +
+        ", ");
+    buffer.write(
+        "endDate=" + (_endDate != null ? _endDate!.format() : "null") + ", ");
     buffer.write("tripImageUrl=" + "$_tripImageUrl" + ", ");
     buffer.write("tripImageKey=" + "$_tripImageKey" + ", ");
-    buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
-    buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null"));
+    buffer.write("createdAt=" +
+        (_createdAt != null ? _createdAt!.format() : "null") +
+        ", ");
+    buffer.write(
+        "updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null"));
     buffer.write("}");
-    
+
     return buffer.toString();
   }
 
@@ -297,11 +303,11 @@ class Trip extends Model {
           identityClaim: "cognito:username",
           provider: AuthRuleProvider.USERPOOLS,
           operations: [
-          ModelOperation.CREATE,
-          ModelOperation.UPDATE,
-          ModelOperation.DELETE,
-          ModelOperation.READ
-        ])
+            ModelOperation.CREATE,
+            ModelOperation.UPDATE,
+            ModelOperation.DELETE,
+            ModelOperation.READ
+          ])
     ];
     
     modelSchemaDefinition.addField(ModelFieldDefinition.id());
@@ -321,17 +327,15 @@ class Trip extends Model {
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
       key: Trip.STARTDATE,
       isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.date)
-    ));
-    
+      ofType: ModelFieldType(ModelFieldTypeEnum.date)));
+
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Trip.ENDDATE,
-      isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.date)
-    ));
-    
+        key: Trip.ENDDATE,
+        isRequired: true,
+        ofType: ModelFieldType(ModelFieldTypeEnum.date)));
+
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Trip.TRIPIMAGEURL,
+        key: Trip.TRIPIMAGEURL,
         isRequired: false,
         ofType: ModelFieldType(ModelFieldTypeEnum.string)));
 
@@ -356,8 +360,7 @@ class Trip extends Model {
         fieldName: 'updatedAt',
         isRequired: false,
         isReadOnly: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.dateTime)
-    ));
+        ofType: ModelFieldType(ModelFieldTypeEnum.dateTime)));
   });
 }
 

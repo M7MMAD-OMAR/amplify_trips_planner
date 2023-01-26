@@ -17,6 +17,9 @@
       },
       "storage": {
         "s3757c69ca": {}
+      },
+      "api": {
+        "amplifytripsplanner": {}
       }
     }
   }

@@ -12,10 +12,6 @@
         "type": "AUTOMERGE"
       }
     },
-    "additionalAuthTypes": [
-      {
-        "mode": "AWS_IAM"
-      }
-    ]
+    "additionalAuthTypes": []
   }
 }
