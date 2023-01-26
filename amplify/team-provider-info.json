@@ -15,9 +15,6 @@
       "auth": {
         "amplifytripsplannere57d0b5c": {}
       },
-      "api": {
-        "amplifytripsplanner": {}
-      },
       "storage": {
         "s3757c69ca": {}
       }
