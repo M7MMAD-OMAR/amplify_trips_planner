@@ -1,0 +1,12 @@
+{
+  "lambdaLayers": [],
+  "permissions": {
+    "api": {
+      "amplifytripsplanner": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  }
+}

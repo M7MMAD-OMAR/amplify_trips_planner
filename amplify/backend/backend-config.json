@@ -12,7 +12,11 @@
       ],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
@@ -51,6 +55,41 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "amplifytripsplanner5396acf5": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "amplifytripsplanner"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_amplifytripsplanner5396acf5_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytripsplanner5396acf5"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytripsplanner5396acf5_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytripsplanner5396acf5"
+        }
+      ]
     }
   },
   "storage": {

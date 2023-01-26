@@ -18,8 +18,11 @@
       "storage": {
         "s3757c69ca": {}
       },
-      "api": {
-        "amplifytripsplanner": {}
+      "function": {
+        "amplifytripsplanner5396acf5": {
+          "deploymentBucketName": "amplify-amplifytripsplanner-dev-134830-deployment",
+          "s3Key": "amplify-builds/amplifytripsplanner5396acf5-6c616374594235795071-build.zip"
+        }
       }
     }
   }

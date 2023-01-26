@@ -186,7 +186,7 @@ class Trip extends Model {
   @override
   String toString() {
     var buffer = new StringBuffer();
-    
+
     buffer.write("Trip {");
     buffer.write("id=" + "$id" + ", ");
     buffer.write("tripName=" + "$_tripName" + ", ");
@@ -317,17 +317,16 @@ class Trip extends Model {
       isRequired: true,
       ofType: ModelFieldType(ModelFieldTypeEnum.string)
     ));
-    
+
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Trip.DESTINATION,
-      isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.string)
-    ));
-    
+        key: Trip.DESTINATION,
+        isRequired: true,
+        ofType: ModelFieldType(ModelFieldTypeEnum.string)));
+
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
-      key: Trip.STARTDATE,
-      isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.date)));
+        key: Trip.STARTDATE,
+        isRequired: true,
+        ofType: ModelFieldType(ModelFieldTypeEnum.date)));
 
     modelSchemaDefinition.addField(ModelFieldDefinition.field(
         key: Trip.ENDDATE,
